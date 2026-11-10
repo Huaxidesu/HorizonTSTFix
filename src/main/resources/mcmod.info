@@ -1,0 +1,21 @@
+{
+	"modListVersion": 2,
+	"modList": [{
+		"modid": "${modId}",
+		"name": "${modName}",
+		"description": "补注册 GTNH 2.9.0 中因加载顺序缺失的矿辞条目，修复依赖这些矿辞的合成表与服务端启动崩溃。",
+		"version": "${modVersion}",
+		"mcversion": "${minecraftVersion}",
+		"url": "https://github.com/Huaxidesu/HorizonTSTFix",
+		"updateUrl": "",
+		"authorList": ["Huaxidesu"],
+		"credits": "",
+		"logoFile": "",
+		"screenshots": [],
+		"parent": "",
+		"requiredMods": [],
+		"dependencies": [],
+		"dependants": [],
+		"useDependencyInformation": false
+	}]
+}
