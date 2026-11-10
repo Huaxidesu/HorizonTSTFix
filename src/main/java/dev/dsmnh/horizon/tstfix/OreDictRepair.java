@@ -24,9 +24,7 @@ public final class OreDictRepair {
     private OreDictRepair() {}
 
     public static void run() {
-        if (ModConfig.logEmptyOreDict()) {
-            logEmptyEntries();
-        }
+        logEmptyEntries();
 
         int repaired = 0;
         for (String entry : ModConfig.repairs()) {
@@ -39,7 +37,10 @@ public final class OreDictRepair {
     }
 
     /**
-     * 列出当前全部空矿辞，便于确认加载顺序问题的影响范围。
+     * 统计空矿辞条目，配置开启时逐条列出。
+     * <p>
+     * GTNH 整合包中大量矿辞名仅为占位，空条目数量通常在万条以上，属正常现象，
+     * 因此默认只输出总数。
      */
     private static void logEmptyEntries() {
         List<String> empty = new ArrayList<>();
@@ -50,7 +51,11 @@ public final class OreDictRepair {
             }
         }
 
-        HorizonTSTFix.LOG.info("当前共有 {} 条空矿辞。", empty.size());
+        HorizonTSTFix.LOG.info("当前共有 {} 条空矿辞条目。", empty.size());
+        if (!ModConfig.logEmptyOreDict()) {
+            return;
+        }
+
         int shown = Math.min(empty.size(), LOG_LIMIT);
         for (int i = 0; i < shown; i++) {
             HorizonTSTFix.LOG.warn("空矿辞：{}", empty.get(i));

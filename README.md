@@ -45,8 +45,8 @@ because the item was not found in the game registry
 
 ```ini
 general {
-    # 是否在启动时列出全部空矿辞条目
-    B:logEmptyOreDict=true
+    # 是否在启动时逐条列出全部空矿辞条目
+    B:logEmptyOreDict=false
 
     # 需要补注册的矿辞，格式：矿辞名=模组ID:注册名:metadata
     S:repairs <
@@ -55,7 +55,9 @@ general {
 }
 ```
 
-`logEmptyOreDict` 会把当前所有空矿辞逐条打印到日志（最多 64 条），用于确认加载顺序问题的影响范围。发现其它空矿辞时，按同样格式追加到 `repairs` 即可。
+启动时日志会输出空矿辞总数。GTNH 整合包中大量矿辞名仅为占位，空条目通常在万条以上，
+属正常现象，因此逐条清单默认关闭；排查某个矿辞为何为空时把 `logEmptyOreDict` 设为
+`true`，最多列出 64 条。发现其它需要补注册的空矿辞时，按同样格式追加到 `repairs` 即可。
 
 ## 安装
 

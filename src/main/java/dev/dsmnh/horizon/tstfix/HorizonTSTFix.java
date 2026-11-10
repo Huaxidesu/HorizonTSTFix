@@ -21,14 +21,12 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
  * <p>
  * 本模组在 {@link FMLPostInitializationEvent} 阶段处理：此时全部模组的 preInit 与 init
  * 均已结束，方块注册表完整；该阶段又早于任何模组的 LoadComplete，因此补注册结果对
- * 极限合成表转换可见。处理过程不依赖模组加载顺序。
+ * 极限合成表转换可见。
+ * <p>
+ * 补注册所需的时机由生命周期本身保证，不依赖模组加载顺序，因此不声明
+ * {@code @Mod.dependencies}。
  */
-@Mod(
-    modid = Tags.MODID,
-    name = Tags.MODNAME,
-    version = Tags.VERSION,
-    dependencies = "after:etfuturum;after:gregtech",
-    acceptedMinecraftVersions = "[1.7.10]")
+@Mod(modid = Tags.MODID, name = Tags.MODNAME, version = Tags.VERSION, acceptedMinecraftVersions = "[1.7.10]")
 public class HorizonTSTFix {
 
     public static final Logger LOG = LogManager.getLogger(Tags.MODID);

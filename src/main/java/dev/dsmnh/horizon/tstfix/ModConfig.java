@@ -20,7 +20,7 @@ public final class ModConfig {
 
     private static final String[] DEFAULT_REPAIRS = new String[] { "craftingBlastFurnace=etfuturum:blast_furnace:0" };
 
-    private static boolean logEmptyOreDict = true;
+    private static boolean logEmptyOreDict = false;
     private static String[] repairs = DEFAULT_REPAIRS;
 
     private ModConfig() {}
@@ -29,8 +29,11 @@ public final class ModConfig {
         Configuration configuration = new Configuration(file);
         configuration.load();
 
-        logEmptyOreDict = configuration
-            .getBoolean("logEmptyOreDict", CATEGORY, true, "是否在启动时列出全部空矿辞条目。空矿辞通常意味着某个模组在注册阶段取到了尚未注册的物品。");
+        logEmptyOreDict = configuration.getBoolean(
+            "logEmptyOreDict",
+            CATEGORY,
+            false,
+            "是否在启动时逐条列出全部空矿辞条目。GTNH 整合包中大量矿辞名仅为占位，数量通常在万条以上，" + "属正常现象；仅在排查某个矿辞为何为空时临时开启。");
 
         repairs = configuration.getStringList(
             "repairs",
